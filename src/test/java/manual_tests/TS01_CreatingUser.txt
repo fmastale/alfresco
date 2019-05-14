@@ -1,0 +1,191 @@
+TS01 - Verify 'New User' form
+
+TSS01- Verify 'First Name' field:
+
+ TC01 - Verify that 'First name' field can't be empty
+
+    Test designed by:
+     - fmastalerz
+
+     Test designed date:
+     - 05/09/19
+
+     Priority:
+     - 2
+
+     Severity:
+     - 2
+
+     Preconditions:
+     - logged into application as Administrator,
+       being at 'User' section of 'Admin Tools' panel,
+       form for creating new user is displayed
+
+     Test steps:
+     1. click on 'Create User'
+
+     Test data:
+     - none
+
+     Expected result:
+     - field 'First Name' will be highlighted in red
+
+     Actual result:
+     - as expected
+
+     Pass/ fail:
+     - pass
+
+ TC02 - Verify that 'First Name' field can have 1 character
+
+ TC03 - Verify that 'First Name' field can have 256 characters
+
+ TC04 - Verify that 'First Name' can contain any kind of character
+
+TC05 - First Name of 256 alpha symbols
+TC06 - First name of 1 digit
+TC07 - Empty First Name
+TC08 -
+
+TSS02 - Verify 'Last Name' field:
+
+ TC01 - Verify that 'Last Name' field can be empty
+
+ TC02 - Verify that 'Last Name' field can have 256 characters
+
+ TC03 - Verify that 'Last Name' can contain any kind of character
+
+
+TSS03 - Verify 'Email' field:
+
+ TC01 - Verify that 'Email' field can't be empty
+
+ TC02 - Verify that 'Email' field can't have 2 characters
+
+ TC03 - Verify that 'Email' field can have 3 characters in proper format
+
+ TC04 - Verify that 'Email' field can have 256 characters in proper format
+
+ TC05 - Verify that 'Email' field can't have 3 characters in wrong format
+
+  Test designed by:
+       - fmastalerz
+
+       Test designed date:
+       - 05/09/19
+
+       Priority:
+       - 2
+
+       Severity:
+       - 2
+
+       Preconditions:
+       - logged into application as Administrator,
+         being at 'User' section of 'Admin Tools' panel,
+         form for creating new user is displayed,
+         email address haven't got '@' inside
+
+       Test steps:
+       1. fill in proper fields with data
+       2. click on 'Create User'
+
+       Test data:
+       - first name: Adam
+       - last name: Nowak
+       - email: ano
+
+       Expected result:
+       - field 'Email' will be highlighted in red
+
+       Actual result:
+       - as expected
+
+       Pass/ fail:
+       - pass
+
+// by proper format of email I mean:
+// <regular expression goes here>
+// at least one character (can't be '.') @ any non special character except '.' [max length 256 chars]
+
+TSS04 - Verify 'Password' field:
+
+ TC01 - Verify that 'Password' field can't be empty
+
+ TC02 - Verify that 'Password' field can't contain 2 characters
+
+    Test designed by:
+     - fmastalerz
+
+     Test designed date:
+     - 05/09/19
+
+     Priority:
+     - 2
+
+     Severity:
+     - 2
+
+     Preconditions:
+     - logged into application as Administrator,
+       being at 'User' section of 'Admin Tools' panel,
+       form for creating new user is displayed
+
+     Test steps:
+     1. fill in proper fields with data
+     2. click on 'Create User'
+
+     Test data:
+     - first name: Adam
+     - last name: Nowak
+     - email: anowak@mail.com
+     - user name: anowak
+     - password: an
+
+     Expected result:
+     - field 'Password' and 'Verify Password' will be highlighted in red
+
+     Actual result:
+     - as expected
+
+     Pass/ fail:
+     - pass
+
+ TC03 - Verify that 'Password' field can have 3 characters
+
+ TC04 - Verify that 'Password' field can have 256 characters
+
+ TC05 - Verify that 'Password' field can contain any character
+
+ TSS05 - Check 'Verify Password' field:
+  - same tests as in 'TSS04' but for 'Verify Password' field
+
+ TSS06 - Verify group search input field:
+
+  TC01 - Verify that input field can't be empty
+
+  TC02 - Verify that input field can contain 255 characters
+
+  TC02 - Verify that input field won't work for single '*' character
+
+  TC03 - Verify that input field will work for all characters without '*'
+
+ TSS07 - Verify Quota input field:
+
+  TC01 - Verify that input field can be empty
+
+  TC02 - Verify that input field can contain one digit
+
+  TC03 - Verify that input field can contain eight digits
+
+  TC04 - Verify that input field can contain one digit and '.' in random order
+
+  TC05 - Verify that input field can contain seven digits and '.' in random order
+
+  TC06 - Verify that input field can't contain more than one '.'
+
+  TC07 - Verify that input field works the same for all values in drop-down list
+
+ TSS08 - Verify 'Disable Account' checkbox:
+
+  TC01 - Verify that checkbox can be selected

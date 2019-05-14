@@ -1,0 +1,9 @@
+TS02 - Verify 'Last Name' field:
+
+TC01 - Empty Last Name
+TC02 - Last Name of 1 digit
+TC03 - Last Name of 1 alpha symbols
+TC04 - Last Name of 256 non-printable characters
+TC05 - Last Name of 256 mixed symbols
+TC06 - Last Name of 256 special symbols
+TC07 - Last Name of 257 alpha symbols

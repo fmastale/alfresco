@@ -1,4 +1,4 @@
-package loaders;
+package login_page_test.loaders;
 
 import java.util.Properties;
 

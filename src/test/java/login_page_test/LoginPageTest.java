@@ -1,12 +1,14 @@
-import loaders.EnvironmentConfigLoader;
-import loaders.UserConfigLoader;
+package login_page_test;
+
+import login_page_test.loaders.EnvironmentConfigLoader;
+import login_page_test.loaders.UserConfigLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import pages.HomePage;
-import pages.LoginPage;
+import login_page_test.pages.HomePage;
+import login_page_test.pages.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,0 +1,12 @@
+TS13 - Verify Quota input field and Select Box:
+
+TC01 - Empty Quota and Box on GB
+TC02 - Quota of 8 alpha symbols and Box on MB
+TC03 - Quota of 8 digits and Box on KB
+TC04 - Quota of 8 special symbols and Box on GB
+TC05 - Quota of 8 non-printable characters on KB
+TC06 - Quota of 8 mixed symbols and Box on MB
+TC07 - Quota of 9 digits and Box on MB
+TC08 - Quota of '-1.0' and Box on GB
+
+//Todo: can I mix checking quota and select box?!

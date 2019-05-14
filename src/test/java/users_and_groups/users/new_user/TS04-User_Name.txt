@@ -1,0 +1,10 @@
+TS04 - Verify 'User Name' field:
+
+TC01 - Empty User Name
+TC02 - User Name of 2 alpha symbols
+TC03 - User Name of 2 digits
+TC04 - User Name of 100 special symbols
+TC05 - User Name of 100 non-printable characters
+TC06 - User Name of 100 mixed symbols
+TC07 - User Name of 1 alpha symbol
+TC08 - User Name of 101 mixed symbols
