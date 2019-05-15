@@ -1,1 +1,3 @@
 TS02 - Verify 'New User' button:
+
+TC01 - Click button

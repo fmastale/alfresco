@@ -1,0 +1,4 @@
+TS16 - Verify Disable Account checkbox:
+
+TC01 - Checkbox is not marked
+TC02 - Checkbox is marked

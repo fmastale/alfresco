@@ -1,0 +1,4 @@
+TS07 - Verify 'Add' button in Group search table:
+
+TC01 - Add one group
+TC02 - Add group that was already added

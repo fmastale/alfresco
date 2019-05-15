@@ -1,3 +1,3 @@
 TS03 - Verify user profile:
 
-//todo: can we do other TC than only checking if this is displayed?
+TC01 - Display profile

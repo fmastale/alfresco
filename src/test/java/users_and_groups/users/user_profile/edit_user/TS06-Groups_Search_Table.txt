@@ -1,0 +1,4 @@
+TS06 - Verify Groups Search Table:
+
+TC01 - Show no groups
+TC02 - Show all groups

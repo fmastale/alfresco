@@ -1,0 +1,6 @@
+TS17 - Verify 'Create User' button:
+
+TC01 - Use button with no input in form
+TC02 - Use button when form is filled with valid data
+TC03 - Use button when form is filled with invalid data
+TC04 - Use button when form is partly filled with proper data

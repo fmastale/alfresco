@@ -1,0 +1,3 @@
+TS03 - Verify 'Choose File' button:
+
+TC01 - Click button

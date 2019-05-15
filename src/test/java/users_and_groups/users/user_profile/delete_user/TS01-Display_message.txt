@@ -1,2 +1,3 @@
-TS01 - Verify if message is displayed:
+TS01 - Verify delete popup message:
 
+TC01 - Display message

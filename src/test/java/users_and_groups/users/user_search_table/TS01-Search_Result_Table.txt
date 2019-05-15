@@ -1,0 +1,6 @@
+TS01 - Verify 'User Search' result table:
+
+TC01 - Display no users
+TC02 - Display 100 users
+TC03 - Display 101 users
+// I assume table capacity = 100

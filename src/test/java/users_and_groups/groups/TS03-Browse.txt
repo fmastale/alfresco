@@ -1,0 +1,3 @@
+TS03 - Verify 'Browse' button:
+
+TC01 - Click button

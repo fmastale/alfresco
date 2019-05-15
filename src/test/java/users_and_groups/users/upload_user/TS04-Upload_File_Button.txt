@@ -1,0 +1,6 @@
+TS04 - Verify 'Upload File' button:
+
+TC01 - Click button when no file chosen
+TC02 - Click button when file chosen
+TC03 - Click button when chosen file is empty
+TC03 - Click button when chosen file is not .csv

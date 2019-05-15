@@ -1,0 +1,5 @@
+TS15 - Verify select box for Quota data type:
+
+TC01 - Select KB
+TC02 - Select MB
+TC03 - Select GB

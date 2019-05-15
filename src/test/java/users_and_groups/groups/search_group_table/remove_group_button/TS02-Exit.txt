@@ -1,0 +1,3 @@
+TS02 - Verify 'Exit' button:
+
+TC01 - Click button

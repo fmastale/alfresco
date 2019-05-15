@@ -1,0 +1,4 @@
+TS12- Verify text area with user groups:
+
+TC01 - Show no groups
+TC02 - Show all groups

@@ -1,0 +1,6 @@
+TS14 - Check if 'Password' and 'Verify Password' match each other:
+
+TC01 - Both fields empty
+TC02 - Both fields same 3 alpha
+TC03 - 3 digits each - not same
+TC04 - 2 alpha same

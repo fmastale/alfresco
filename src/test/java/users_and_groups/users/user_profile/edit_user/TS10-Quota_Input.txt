@@ -1,0 +1,10 @@
+TS10 - Verify Quota input field:
+
+TC01 - Empty Quota
+TC02 - Quota of 8 alpha symbols
+TC03 - Quota of 8 digits
+TC04 - Quota of 8 special symbols
+TC05 - Quota of 8 non-printable
+TC06 - Quota of 8 mixed symbols
+TC07 - Quota of 9 digits
+TC08 - Quota of '-1.0'

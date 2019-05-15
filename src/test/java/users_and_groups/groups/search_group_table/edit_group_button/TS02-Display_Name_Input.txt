@@ -1,0 +1,9 @@
+TS02 - Verify 'Display Name' input field:
+
+TC01 - Empty Display Name
+TC02 - Display Name of 1 digit
+TC03 - Display Name of 1 alpha symbols
+TC04 - Display Name of 255 non-printable characters
+TC05 - Display Name of 255 mixed symbols
+TC06 - Display Name of 255 special symbols
+TC07 - Display Name of 256 alpha symbols

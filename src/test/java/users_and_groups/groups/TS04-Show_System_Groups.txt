@@ -1,0 +1,4 @@
+TS04 - Verify 'Show system groups' checkbox:
+
+TC01 - Checkbox is not marked
+TC02 - Checkbox is marked

@@ -1,1 +1,9 @@
-TS01 - Verify User Search input field:
+TS01 - Verify 'User Search' input field:
+
+TC01 - Empty User Search
+TC02 - User Search of 1 digit
+TC03 - User Search of 1 alpha symbols
+TC04 - User Search of 256 non-printable characters
+TC05 - User Search of 256 mixed symbols
+TC06 - User Search of 256 special symbols
+TC07 - User Search of 257 alpha symbols

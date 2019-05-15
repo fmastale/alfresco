@@ -1,0 +1,7 @@
+TS05 - Verify groups table:
+
+TC01 - Display table for no groups
+TC02 - Display table for 1 group
+TC03 - Display table for 100 groups
+TC04 - Display table for 101 groups
+// I assume that table capacity = 100

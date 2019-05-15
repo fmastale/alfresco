@@ -1,0 +1,12 @@
+TS04 - Verify Groups Search input field:
+
+TC01 - Empty input field
+TC02 - Input field with 1 alpha symbol
+TC03 - Input field with 1 digit
+TC04 - Input field with 255 special symbols
+TC05 - Input field with 255 non-printable characters
+TC06 - Input field with 255 mixed symbols
+TC07 - Input field with 256 digits
+TC08 - Input field with '+' character   // it allows you to search all available groups
+TC09 - Input field with '*' character   // it is treated like empty field
+

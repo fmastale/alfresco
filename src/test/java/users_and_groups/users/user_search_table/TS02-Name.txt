@@ -1,0 +1,5 @@
+TS02 - Verify 'Name' label:
+
+TC01 - Display results
+TC02 - Sort ascending
+TC03 - Sort descending

@@ -1,0 +1,3 @@
+TS16 - Verify 'Use Default' photo button:
+
+TC01 - Click button

@@ -1,0 +1,5 @@
+TS01 - Verify 'Upload Results' display:
+
+TC01 - Uploaded file in supported format
+TC02 - Uploaded file in unsupported format
+TC03 - Uploaded empty file

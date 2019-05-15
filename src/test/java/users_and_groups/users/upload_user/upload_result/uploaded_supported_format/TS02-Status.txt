@@ -1,0 +1,4 @@
+TS02 - Verify 'Status' label:
+
+TC01 - Sort ascending
+TC02 - Sort descending
