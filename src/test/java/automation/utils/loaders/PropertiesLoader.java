@@ -1,4 +1,4 @@
-package automation.tests.utils.loaders;
+package automation.utils.loaders;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

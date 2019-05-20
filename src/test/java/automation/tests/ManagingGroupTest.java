@@ -1,12 +1,13 @@
-package automation.tests.browsegroup;
+package automation.tests;
 
-import automation.tests.utils.loaders.EnvironmentConfigLoader;
-import automation.tests.utils.loaders.UserConfigLoader;
-import automation.tests.utils.pages.BrowsePage;
-import automation.tests.utils.pages.HomePage;
-import automation.tests.utils.pages.LoginPage;
-import automation.tests.utils.pages.NewGroupPage;
+import automation.utils.loaders.EnvironmentConfigLoader;
+import automation.utils.loaders.UserConfigLoader;
+import automation.pages.BrowsePage;
+import automation.pages.HomePage;
+import automation.pages.LoginPage;
+import automation.pages.NewGroupPage;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,7 +41,9 @@ public class ManagingGroupTest {
         browsePage = newGroupPage.submitCreateGroup();
 
         //then
-
+        Alert alert=driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.dismiss();
     }
 
     @BeforeEach

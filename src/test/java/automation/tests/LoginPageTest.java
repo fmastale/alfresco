@@ -1,14 +1,14 @@
-package automation.tests.loginpage;
+package automation.tests;
 
-import automation.tests.utils.loaders.EnvironmentConfigLoader;
-import automation.tests.utils.loaders.UserConfigLoader;
+import automation.utils.loaders.EnvironmentConfigLoader;
+import automation.utils.loaders.UserConfigLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import automation.tests.utils.pages.HomePage;
-import automation.tests.utils.pages.LoginPage;
+import automation.pages.HomePage;
+import automation.pages.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

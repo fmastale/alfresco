@@ -1,4 +1,4 @@
-package automation.tests.utils.loaders;
+package automation.utils.loaders;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

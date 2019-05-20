@@ -1,4 +1,4 @@
-package automation.tests.utils.pages;
+package automation.pages;
 
 import org.openqa.selenium.WebDriver;
 
