@@ -1,22 +1,22 @@
-package loginpage;
+package automation.tests.loginpage;
 
-import loginpage.loaders.EnvironmentConfigLoader;
-import loginpage.loaders.UserConfigLoader;
+import automation.tests.utils.loaders.EnvironmentConfigLoader;
+import automation.tests.utils.loaders.UserConfigLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import loginpage.pages.HomePage;
-import loginpage.pages.LoginPage;
+import automation.tests.utils.pages.HomePage;
+import automation.tests.utils.pages.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LoginPageTest {
-    private LoginPage loginPage;
     private static WebDriver driver;
-    private UserConfigLoader userConfLoader = new UserConfigLoader("user");
     private static EnvironmentConfigLoader envConfLoader = new EnvironmentConfigLoader("environment");
+    private LoginPage loginPage;
+    private UserConfigLoader userConfLoader = new UserConfigLoader("user");
 
     @Test
     void checkIfLoginDefaultUser() {

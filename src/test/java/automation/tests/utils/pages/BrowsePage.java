@@ -1,4 +1,4 @@
-package loginpage.pages;
+package automation.tests.utils.pages;
 
 import org.openqa.selenium.WebDriver;
 
@@ -9,5 +9,5 @@ public class BrowsePage {
         this.driver = driver;
     }
 
-    //todo: implement this
+
 }

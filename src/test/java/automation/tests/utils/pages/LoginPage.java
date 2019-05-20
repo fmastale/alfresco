@@ -1,4 +1,4 @@
-package loginpage.pages;
+package automation.tests.utils.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

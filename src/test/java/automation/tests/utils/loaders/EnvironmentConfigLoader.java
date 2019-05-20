@@ -1,4 +1,4 @@
-package loginpage.loaders;
+package automation.tests.utils.loaders;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,6 +37,7 @@ public class EnvironmentConfigLoader {
     }
 
     public String getNewGroup() {
+        //todo: same as above
         return "http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dcreate";
     }
 }

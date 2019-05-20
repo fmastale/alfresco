@@ -1,4 +1,4 @@
-package loginpage.loaders;
+package automation.tests.utils.loaders;
 
 import java.util.Properties;
 

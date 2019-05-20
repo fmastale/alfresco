@@ -1,10 +1,11 @@
-package loginpage.pages;
+package automation.tests.utils.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class NewGroupPage {
     private WebDriver driver;
+
     By identifierLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-create-shortname");
     By displayNameLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-create-displayname");
     By createGroupButtonLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-creategroup-ok-button-button");
@@ -24,7 +25,7 @@ public class NewGroupPage {
     }
 
     public BrowsePage submitCreateGroup() {
-        driver.findElement(createGroupButtonLocator).submit();
+        driver.findElement(createGroupButtonLocator).click();
         return new BrowsePage(driver);
     }
 
