@@ -1,0 +1,5 @@
+TS01 - Verify adding brand new group:
+
+TC01 - User can create group
+TC02 - User can create group and start creating another
+TC03 - User can cancel creating group and exit

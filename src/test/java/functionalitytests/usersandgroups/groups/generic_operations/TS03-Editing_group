@@ -1,0 +1,4 @@
+TS01 - Verifying editing group:
+
+TC01 - User can change group display name and save
+TC02 - User can cancel editing group and exit

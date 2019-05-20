@@ -1,0 +1,5 @@
+TS01 - Verify searching for groups:
+
+TC01 - User can search groups excluding system groups
+TC02 - User can search groups including system groups
+TC03 - User can't search groups when input field is empty

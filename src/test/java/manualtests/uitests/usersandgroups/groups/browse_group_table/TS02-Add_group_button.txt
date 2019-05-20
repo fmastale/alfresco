@@ -1,0 +1,3 @@
+TS02 - Verify add group button:
+
+TC01 - Click the button

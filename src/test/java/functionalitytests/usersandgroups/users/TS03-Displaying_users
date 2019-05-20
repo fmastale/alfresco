@@ -1,0 +1,6 @@
+TS03 - Verify displaying users:
+
+TC01 - User can display all users by using labels in the table
+TC02 - User can sort all users ascending by using labels in the table
+TC03 - User can sort all users descending by using labels in the table
+TC04 - User can switch between views of table if there is more than one

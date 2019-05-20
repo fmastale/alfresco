@@ -1,0 +1,8 @@
+TS04 - Verifying searching and adding groups:
+
+TC01 - User can search for groups
+TC02 - User can add one group as subgroup at once
+TC03 - User can exit
+TC04 - User can't add group as subgroup if already added
+TC05 - User can't add group as subgroup if group or it's subgroups are higher in groups hierarchy
+TC06 - User can't search for groups if input field is empty

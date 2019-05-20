@@ -1,0 +1,5 @@
+TS09 - Verify functionality_tests.users_and_groups.users group remove button:
+
+TC01 - Remove 1 new group
+TC02 - Remove 1 group already assigned
+TC03 - Remove 101 groups

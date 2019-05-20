@@ -1,0 +1,6 @@
+TS01 - Verify displaying groups by using table labels:
+
+TC01 - User can display groups excluding system groups
+TC02 - User can display groups including system groups
+TC03 - User can display groups in ascending order
+TC04 - User can display groups in descending order

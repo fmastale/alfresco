@@ -1,0 +1,5 @@
+TS02 - Verify removing from subgroup:
+
+TC01 - User can be remove from subgroup
+TC02 - Subgroup can be remove from subgroup
+TC03 - Subgroup can be remove from all groups (permanently)

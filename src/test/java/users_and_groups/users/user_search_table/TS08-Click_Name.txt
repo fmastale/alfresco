@@ -1,3 +1,0 @@
-TS08 - Verify hyperlink in users 'Name' area:
-
-TC01 - Click on user name

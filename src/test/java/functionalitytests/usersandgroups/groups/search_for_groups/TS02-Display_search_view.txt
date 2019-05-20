@@ -1,0 +1,3 @@
+TS02 - Verify displaying search view:
+
+TC01 - User can display search view

@@ -1,0 +1,7 @@
+TS05 - Verify uploading users from .csv file:
+
+TC01 - User can upload users from .csv file
+TC02 - User can exit uploading users from .csv file
+TC03 - User can cancel uploading users from .csv file
+TC04 - User can't upload users from empty .csv file
+TC05 - User can't upload other types of file than .csv

@@ -1,0 +1,5 @@
+TS03 - Verify deleting user:
+
+TC01 - User can delete user
+TC02 - User can exit deleting user
+TC03 - User can cancel deleting user

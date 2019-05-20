@@ -1,0 +1,6 @@
+TS01 - Verify removing group:
+
+TC01 - User can remove group
+TC02 - User can remove group permanently //if it is part of more than one group
+TC03 - User can cancel removing group
+TC04 - User can exit removing group

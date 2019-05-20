@@ -1,0 +1,6 @@
+TS02 - Verify managing group
+
+TC01 - User can edit group
+TC02 - User can edit system group
+TC03 - User can remove group
+TC04 - User can't remove system group

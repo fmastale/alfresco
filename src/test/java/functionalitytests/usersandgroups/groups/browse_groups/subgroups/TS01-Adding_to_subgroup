@@ -1,0 +1,5 @@
+TS01 - Verify adding to subgroup
+
+TC01 - User can be added to group
+TC02 - Subgroup can be added to current group
+TC03 - Newly created subgroup can be added to group

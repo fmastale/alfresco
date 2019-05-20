@@ -1,0 +1,6 @@
+TS01 - Verify 'User Search' result table:
+
+TC01 - Display no functionality_tests.users_and_groups.users
+TC02 - Display 100 functionality_tests.users_and_groups.users
+TC03 - Display 101 functionality_tests.users_and_groups.users
+// I assume table capacity = 100

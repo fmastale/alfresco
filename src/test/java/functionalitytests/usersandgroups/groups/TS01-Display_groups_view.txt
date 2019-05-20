@@ -1,0 +1,3 @@
+TS01 - Verify displaying and managing groups view:
+
+TC01 - User can display view

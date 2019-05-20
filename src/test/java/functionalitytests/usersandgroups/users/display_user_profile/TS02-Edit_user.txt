@@ -1,0 +1,4 @@
+TS02 - Verify editing user profile:
+
+TC01 - User can edit information in user profile and save changes
+TC02 - User can cancel editing user profile

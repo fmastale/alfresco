@@ -1,0 +1,7 @@
+TS05 - Verify search and add user:
+
+TC01 - User can search for functionality_tests.users_and_groups.users
+TC02 - User can add one user at once to group
+TC03 - User can exit
+TC04 - User can't add user to group if he is already added
+TC05 - User can't search for functionality_tests.users_and_groups.users if input field is empty

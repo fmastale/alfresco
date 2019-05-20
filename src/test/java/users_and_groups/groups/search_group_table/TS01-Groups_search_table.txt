@@ -1,6 +1,0 @@
-TS01 - Verify Groups search table:
-
-TC01 - Display no groups
-TC02 - Display 100 groups
-TC03 - Display 101 groups
-TC04 - Display 100 groups with 'Show System Groups' checkbox marked

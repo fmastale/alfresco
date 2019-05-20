@@ -1,0 +1,5 @@
+TS02 - Verify searching for user:
+
+TC01 - User can search for users
+TC02 - User can't search for users if input field is empty
+TC03 - User can search for all users using '*' character
