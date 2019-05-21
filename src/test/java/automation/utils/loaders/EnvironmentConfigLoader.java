@@ -31,13 +31,11 @@ public class EnvironmentConfigLoader {
         return String.format("http://%s:%s%s", hostname, port, pageURL );
     }
 
-    public  String getBrowsePanel() {
-        //todo: move this to env. prop.
-        return "http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dsearch%26refresh%3Dfalse";
+    public  String getAdminBrowsePanel() {
+        return properties.getProperty("adminBrowsePanel");
     }
 
-    public String getNewGroup() {
-        //todo: same as above
-        return "http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dcreate";
+    public String getNewGroupPanel() {
+        return properties.getProperty("adminNewGroupPanel");
     }
 }
