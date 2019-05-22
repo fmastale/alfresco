@@ -1,6 +1,6 @@
 TS01 - Managing groups:
 
-TC01 - New group can be added
+TC01 - New group can be created
 TC02 - Existing group can be edited
 TC03 - Existing group can be removed
 TC04 - Existing group can be removed permanently
