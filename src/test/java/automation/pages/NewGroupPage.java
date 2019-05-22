@@ -7,13 +7,13 @@ import org.openqa.selenium.support.FindBy;
 public class NewGroupPage extends PageObject {
 
     @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-create-shortname")
-    WebElement identifierLocator;
+    private WebElement identifierLocator;
 
     @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-create-displayname")
-    WebElement displayNameLocator;
+    private WebElement displayNameLocator;
 
     @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-creategroup-ok-button-button")
-    WebElement createGroupButtonLocator;
+    private WebElement createGroupButtonLocator;
 
     public NewGroupPage(WebDriver driver) {
         super(driver);
