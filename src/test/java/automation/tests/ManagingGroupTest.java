@@ -23,20 +23,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("TS01 - Managing groups")
 public class ManagingGroupTest {
 
-    private static LoginPage loginPage;
+    private static Go go;
     private static WebDriver driver;
+    private static LoginPage loginPage;
     private static UserConfigLoader userConfLoader = new UserConfigLoader("user");
     private static EnvironmentConfigLoader envConfLoader = new EnvironmentConfigLoader("environment");
     private NewGroupPage newGroupPage;
     private GroupManagementPage groupManagementPage;
-    private static Go go;
 
     @DisplayName("TC01 - New group can be created")
     @ParameterizedTest
     @MethodSource("groupCredentialsProvider")
     void checkIfNewGroupCanBeCreated(final String identifier, final String displayName) {
         //given:
-        //driver.get(envConfLoader.getNewGroupPanel());
         go.to(Pages.NEW_GROUP_PAGE);
 
         //when:
@@ -48,13 +47,9 @@ public class ManagingGroupTest {
         groupManagementPage = new GroupManagementPage(driver);
         groupManagementPage.groupNameXPath(displayName, identifier);
 
+        go.to(Pages.BROWSE_GROUPS_PAGE);
 
-        driver.get(envConfLoader.getGroupManagementPage());
-        //go.to(Pages.GROUP_MANAGEMENT_PAGE);
-        driver.navigate().refresh();
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath(String.format("//span[contains(text(),'%s (%s)')]", displayName, identifier))));
+        waitForXpath(identifier, displayName);
 
         //then
         assertEquals(String.format("%s (%s)", displayName, identifier), groupManagementPage.getGroupName(),
@@ -90,12 +85,10 @@ public class ManagingGroupTest {
 
         go = new Go(driver);
         go.to(Pages.LOGIN_PAGE);
-        //driver.get(envConfLoader.urlBeginning());
 
         loginPage = new LoginPage(driver);
         loginPage.typeUsername(userConfLoader.getUserLogin());
         loginPage.typePassword(userConfLoader.getUserPassword());
-
         loginPage.submitLogin();
     }
 
@@ -106,8 +99,13 @@ public class ManagingGroupTest {
 
     private static Stream<Arguments> groupCredentialsProvider() {
         return Stream.of(
-                Arguments.of("Marvel Fans", "Marvel"),
-                Arguments.of("DC Fans", "DC")
+                Arguments.of("Mallrats", "Rats from mall")
         );
+    }
+
+    private void waitForXpath(String identifier, String displayName) {
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath(String.format("//span[contains(text(),'%s (%s)')]", displayName, identifier))));
     }
 }

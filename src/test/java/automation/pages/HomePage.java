@@ -1,18 +1,19 @@
 package automation.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HomePage {
-    private final WebDriver driver;
-    private final By nameSpanLocator = By.id("HEADER_USER_MENU_POPUP_text");
+public class HomePage extends PageObject{
+
+    @FindBy(id="HEADER_USER_MENU_POPUP_text")
+    private WebElement nameSpanLocator;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public String nameFromSpan() {
-        return driver.findElement(nameSpanLocator).getText();
+        return nameSpanLocator.getText();
     }
-
 }

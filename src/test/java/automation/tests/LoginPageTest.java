@@ -36,8 +36,6 @@ class LoginPageTest {
 
     @BeforeEach
     void beforeEach(){
-        //driver.get(envConfLoader.urlBeginning());
-
         go.to(Pages.LOGIN_PAGE);
         loginPage = new LoginPage(driver);
     }
@@ -46,6 +44,7 @@ class LoginPageTest {
     static void beforeAll(){
         driver = envConfLoader.getDriver();
         go = new Go(driver);
+
         go.to(Pages.LOGIN_PAGE);
     }
 
