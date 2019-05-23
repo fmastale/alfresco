@@ -34,4 +34,12 @@ public class LoginPage extends PageObject{
         loginButtonLocator.submit();
         return new HomePage(driver);
     }
+
+    public HomePage logUser(WebDriver driver, String username, String password) {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeUsername(username);
+        loginPage.typePassword(password);
+        HomePage homePage = loginPage.submitLogin();
+        return homePage;
+    }
 }

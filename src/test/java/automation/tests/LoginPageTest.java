@@ -16,16 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LoginPageTest {
     private static WebDriver driver;
-    private static EnvironmentConfigLoader envConfLoader = new EnvironmentConfigLoader("environment");
     private static Go go;
     private LoginPage loginPage;
-    private UserConfigLoader userConfLoader = new UserConfigLoader("user");
 
     @Test
     void checkIfLoginDefaultUser() {
-        loginPage.typeUsername(userConfLoader.getUserLogin());
-        loginPage.typePassword(userConfLoader.getUserPassword());
-        HomePage homePage = loginPage.submitLogin();
+        UserConfigLoader userConfLoader = new UserConfigLoader("user");
+
+        HomePage homePage = loginPage.logUser(driver, userConfLoader.getUserLogin(), userConfLoader.getUserPassword());
 
         String userFullName = userConfLoader.getUserFullName();
         String spanWithUsername = homePage.nameFromSpan();
@@ -42,6 +40,7 @@ class LoginPageTest {
 
     @BeforeAll
     static void beforeAll(){
+        EnvironmentConfigLoader envConfLoader = new EnvironmentConfigLoader("environment");
         driver = envConfLoader.getDriver();
         go = new Go(driver);
 
