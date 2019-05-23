@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -61,7 +62,21 @@ public class ManagingGroupTest {
     @DisplayName("TC02 - Existing group can be edited")
     @Test
     void checkIfGroupCanBeEdited() {
-        //todo: implement this
+        //todo: re-write this
+        //http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dupdate%26group%3D
+        driver.get("http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dupdate%26group%3DSome");
+        WebElement inputField = driver.findElement(By.id("page_x002e_ctool_x002e_admin-console_x0023_default-update-displayname"));
+        inputField.sendKeys(" with updated name");
+        WebElement editButton = driver.findElement(By.id("page_x002e_ctool_x002e_admin-console_x0023_default-updategroup-save-button-button"));
+        editButton.click();
+        WebElement nameSpan = driver.findElement(By.xpath("//span[contains(text(),'SomeGroup with updated name')]"));
+
+        waitForXpath("Some", "Group with updated name");
+        String nameFromNameSpan = nameSpan.getText();
+        System.out.println(nameFromNameSpan);
+
+        /*assertEquals("SomeGroup with updated name", nameFromNameSpan, "Group name doesn't match");*/
+
     }
 
     @DisplayName("TC03 - Existing group can be removed")
@@ -97,7 +112,7 @@ public class ManagingGroupTest {
 
     @AfterAll
     static void afterAll() {
-       driver.quit();
+       //driver.quit();
     }
 
     private static Stream<Arguments> groupCredentialsProvider() {

@@ -25,7 +25,7 @@ public class EnvironmentConfigLoader {
 
     public String urlBeginning() {
         // fixme check nulls
-        // fixme write buider for making URL
+        // fixme write buider for making URL?! do I still need this if I move urls to Pages enum?
         String hostname = properties.getProperty("hostname");
         String port = properties.getProperty("port");
         String pageURL = properties.getProperty("pageURL");
