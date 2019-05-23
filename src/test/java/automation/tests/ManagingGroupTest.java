@@ -51,6 +51,8 @@ public class ManagingGroupTest {
 
         waitForXpath(identifier, displayName);
 
+        System.out.println(groupManagementPage.getGroupInfo());
+
         //then
         assertEquals(String.format("%s (%s)", displayName, identifier), groupManagementPage.getGroupName(),
                 "Group 'display name' and/or 'identifier' are not the same");
@@ -86,6 +88,7 @@ public class ManagingGroupTest {
         go = new Go(driver);
         go.to(Pages.LOGIN_PAGE);
 
+        //todo: make this DRY
         loginPage = new LoginPage(driver);
         loginPage.typeUsername(userConfLoader.getUserLogin());
         loginPage.typePassword(userConfLoader.getUserPassword());
