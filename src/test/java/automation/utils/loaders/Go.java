@@ -13,7 +13,7 @@ public class Go {
         driver.get(page.getUrl());
     }
 
-    public void toConcreteURL(Pages page, String address) {
+    public void toConcretePage(Pages page, String address) {
         driver.get(page.getConcreteUrl(address));
     }
 }

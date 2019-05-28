@@ -16,9 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -33,7 +31,7 @@ public class ManagingGroupTest {
     private BrowseGroupsPanel browseGroupsPanel;
     private WaitForElement waitForElement;
     private static int timeOut;
-    private JavascriptExecutor jsExecutor;
+    private static JavascriptExecutor jsExecutor;
 
     @DisplayName("TC01 - New group can be created")
     @ParameterizedTest
@@ -58,7 +56,7 @@ public class ManagingGroupTest {
     void checkIfGroupCanBeEdited(final String displayName, final String identifier, final String newDisplayName) {
         //given:
         //todo: better name for getting to <some default url + postfix> ?!
-        go.toConcreteURL(Pages.GROUP_EDIT_PAGE, identifier);
+        go.toConcretePage(Pages.GROUP_EDIT_PAGE, identifier);
 
         //when:
         EditGroupPage editGroupPage = new EditGroupPage(driver);
@@ -76,39 +74,18 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("groupToRemoveProvider")
     void checkIfGroupCanBeRemoved(String groupToRemove) {
-
-        jsExecutor = ((JavascriptExecutor)driver);
-
+        //given:
+        //todo: get rid off driver.manage()...
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
         go.to(Pages.BROWSE_GROUPS_PANEL);
 
-        String pathToSpan = String.format("//*[contains(text(), '%s')]/parent::*", groupToRemove);
-        WebElement groupSpan = driver.findElement(By.xpath(pathToSpan));
-
-        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", groupSpan);
-
-
-        By pathToButton = By.xpath("//a[@class='yui-columnbrowser-item groups-item-group']//span[contains(text(),'RemovableGroup (Removable)')]/following-sibling::span[1]/span[@class='groups-delete-button']");
-        WebElement removeButton = driver.findElement(pathToButton);
-
-        jsExecutor.executeScript("arguments[0].click();", removeButton);
-
-
-        WebElement deleteButton = driver.findElement(By.id("page_x002e_ctool_x002e_admin-console_x0023_default-remove-button-button"));
-        deleteButton.click();
-
+        //when:
+        browseGroupsPanel.removeGroup(jsExecutor, groupToRemove);
         go.to(Pages.BROWSE_GROUPS_PANEL);
-
         waitForElement.wait(By.xpath("//div[@class='yui-columnbrowser-column-body']"), timeOut);
-        List<WebElement> groups =
-                driver.findElements(By.xpath("//a[@class='yui-columnbrowser-item groups-item-group']"));
 
-
-        boolean isFound = groups.stream().anyMatch(element -> element.getText().equals(groupToRemove));
-
-        assertFalse(isFound, "Group was found on a list containing all of groups");
-
+        //then:
+        assertFalse(browseGroupsPanel.isGroupOnList(groupToRemove), "Group was found on a list containing all of groups");
     }
 
     @DisplayName("TC04 - Existing group can be removed permanently")
@@ -139,12 +116,12 @@ public class ManagingGroupTest {
         new LoginPage(driver).logUser(userConfLoader.getUserLogin(), userConfLoader.getUserPassword());
         timeOut = envConfLoader.getTimeOut();
 
-
+        jsExecutor = ((JavascriptExecutor)driver);
     }
 
     @AfterAll
     static void afterAll() {
-       //   driver.quit();
+       driver.quit();
     }
 
     private static Stream<Arguments> groupCredentialsProvider() {
