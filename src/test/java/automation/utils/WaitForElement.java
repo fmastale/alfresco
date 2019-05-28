@@ -7,14 +7,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitForElement {
+    //todo: fix issues with this
+    private WebDriver driver;
 
-    public static void wait(WebDriver driver, By pathToElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+    public WaitForElement(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void wait(By pathToElement, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.visibilityOfElementLocated(pathToElement));
     }
 
-    public static void wait(WebDriver driver, WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+    public void wait(WebElement element, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 }

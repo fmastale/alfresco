@@ -12,7 +12,7 @@ public class BrowseGroupsPanel {
         this.driver = driver;
     }
 
-    public BrowseGroupsPanel setPathToGroupCredentials(String displayName, String identifier) {
+    public BrowseGroupsPanel setGroupCredentialsPath(String displayName, String identifier) {
         this.groupCredentials = By.xpath(String.format("//span[contains(text(),'%s (%s)')]", displayName, identifier));
         return this;
     }
@@ -21,7 +21,7 @@ public class BrowseGroupsPanel {
         return driver.findElement(groupCredentials).getText();
     }
 
-    public By getGroupCredentials() {
+    public By getGroupCredentialsPath() {
         return groupCredentials;
     }
 

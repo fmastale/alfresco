@@ -1,14 +1,14 @@
 package automation.utils.loaders;
 
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Objects;
-import java.util.Properties;
 
 public class EnvironmentConfigLoader {
-    private Properties properties;
+    private PropertiesConfiguration properties;
 
     public EnvironmentConfigLoader(String propName) {
         this.properties = PropertiesLoader.load(propName);
@@ -23,25 +23,27 @@ public class EnvironmentConfigLoader {
         return new FirefoxDriver();
     }
 
-    public String urlBeginning() {
-        // fixme check nulls
-        // fixme write buider for making URL?! do I still need this if I move urls to Pages enum?
-        String hostname = properties.getProperty("hostname");
-        String port = properties.getProperty("port");
-        String pageURL = properties.getProperty("pageURL");
-        return String.format("http://%s:%s%s", hostname, port, pageURL );
+    public String getLoginPage() {
+        return properties.getString("loginPage");
     }
 
-    public String getGroupManagementPage() {
-        String adminBrowsePanel = properties.getProperty("adminBrowsePanel");
-        String adminToolsPanel = properties.getProperty("adminToolsPanel");
-        return String.format("%s%s%s", urlBeginning(), adminToolsPanel, adminBrowsePanel);
+    public String getAdminToolsGroupPage() {
+        return properties.getString("adminToolsGroupsPage");
     }
 
-    public String getNewGroupPanel() {
-        String adminNewGroupPanel = properties.getProperty("adminNewGroupPanel");
-        String adminToolsPanel = properties.getProperty("adminToolsPanel");
-        return String.format("%s%s%s", urlBeginning(), adminToolsPanel, adminNewGroupPanel);
+    public String getBrowseGroupsPanel() {
+        return properties.getString("browseGroupsPanel");
     }
 
+    public String getNewGroupPage() {
+        return properties.getString("adminNewGroupPage");
+    }
+
+    public int getTimeOut() {
+        return properties.getInt("timeOut");
+    }
+
+    public String getGroupEditPage() {
+        return properties.getString("groupEditPage");
+    }
 }

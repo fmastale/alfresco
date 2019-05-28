@@ -1,13 +1,15 @@
 package automation.utils.loaders;
 
+import org.apache.commons.configuration.PropertiesConfiguration;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoader {
 
-    public static Properties load(String propName) {
-        Properties properties = new Properties();
+    public static PropertiesConfiguration load(String propName) {
+        PropertiesConfiguration properties = new PropertiesConfiguration();
 
         //todo check nulls
         try {

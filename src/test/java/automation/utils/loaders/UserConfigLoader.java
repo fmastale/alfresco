@@ -1,23 +1,23 @@
 package automation.utils.loaders;
 
-import java.util.Properties;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class UserConfigLoader {
-    private Properties properties;
+    private PropertiesConfiguration properties;
 
     public UserConfigLoader(String propName) {
         this.properties = PropertiesLoader.load(propName);
     }
 
     public String getUserLogin(){
-        return properties.getProperty("login");
+        return properties.getString("login");
     }
 
     public String getUserPassword(){
-        return properties.getProperty("password");
+        return properties.getString("password");
     }
 
     public String getUserFullName() {
-        return properties.getProperty("full_name");
+        return properties.getString("full_name");
     }
 }

@@ -34,5 +34,11 @@ public class NewGroupPage extends PageObject {
         return this;
     }
 
+    public NewGroupPage createGroup(String displayName, String identifier) {
+        typeDisplayName(displayName);
+        typeIdentifier(identifier);
+        submitCreateGroupButton();
+        return this;
+    }
 
 }

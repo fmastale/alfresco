@@ -1,12 +1,11 @@
 package automation.utils.loaders;
 
 public enum Pages {
-    //todo: make it DRY
-    LOGIN_PAGE("http://127.0.0.1:8080/share/page/"),
-    GROUP_MANAGEMENT_PAGE("http://127.0.0.1:8080/share/page/console/admin-console/groups"),
-    BROWSE_GROUPS_PANEL("http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dsearch%26refresh%3Dfalse"),
-    NEW_GROUP_PAGE("http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dcreate"),
-    SOME_GROUP_EDIT_PAGE("http://127.0.0.1:8080/share/page/console/admin-console/groups#state=panel%3Dupdate%26group%3DSome");
+    LOGIN_PAGE(new EnvironmentConfigLoader("environment").getLoginPage()),
+    ADMIN_TOOLS_GROUPS_PAGE(new EnvironmentConfigLoader("environment").getAdminToolsGroupPage()),
+    BROWSE_GROUPS_PANEL(new EnvironmentConfigLoader("environment").getBrowseGroupsPanel()),
+    NEW_GROUP_PAGE(new EnvironmentConfigLoader("environment").getNewGroupPage()),
+    GROUP_EDIT_PAGE(new EnvironmentConfigLoader("environment").getGroupEditPage());
 
     private final String url;
 
@@ -16,5 +15,10 @@ public enum Pages {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getConcreteUrl(String address) {
+        String newUrl = url + address;
+        return newUrl;
     }
 }
