@@ -82,19 +82,32 @@ public class ManagingGroupTest {
         //when:
         browseGroupsPanel.removeGroup(jsExecutor, groupToRemove);
         go.to(Pages.BROWSE_GROUPS_PANEL);
-        waitForElement.wait(By.xpath("//div[@class='yui-columnbrowser-column-body']"), timeOut);
+        //todo: clean waitFor...
+        waitForElement.wait(browseGroupsPanel.getxPathToGroupsTable(), timeOut);
 
         //then:
         assertFalse(browseGroupsPanel.isGroupOnList(groupToRemove), "Group was found on a list containing all of groups");
     }
 
     @DisplayName("TC04 - Existing group can be removed permanently")
-    @Test
-    void checkIfGroupCanBeRemovedPermanently() {
-        // todo: implement this
+    @ParameterizedTest
+    @MethodSource("permanentRemoveGroupProvider")
+    void checkIfGroupCanBeRemovedPermanently(String secondToRemove) {
+        // todo: in fact TC03 and TC04 do same thing. Difference is in relations between groups inside app
+        //  - should I extract whole code from 'given' and 'when' of both methods to another, single method?!
+        // or can I leave it like it is now?
+
         //given:
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        go.to(Pages.BROWSE_GROUPS_PANEL);
+
         //when:
+        browseGroupsPanel.removeGroup(jsExecutor, secondToRemove);
+        go.to(Pages.BROWSE_GROUPS_PANEL);
+        waitForElement.wait(By.xpath("//div[@class='yui-columnbrowser-column-body']"), timeOut);
+
         //then:
+        assertFalse(browseGroupsPanel.isGroupOnList(secondToRemove), "Group was found on a list containing all of groups");
     }
 
     @BeforeEach
@@ -139,6 +152,12 @@ public class ManagingGroupTest {
     private static Stream<Arguments> groupToRemoveProvider() {
         return Stream.of(
                 Arguments.of("RemovableGroup (Removable)")
+        );
+    }
+
+    private static Stream<Arguments> permanentRemoveGroupProvider() {
+        return Stream.of(
+                Arguments.of("SecondToRemove")
         );
     }
 }

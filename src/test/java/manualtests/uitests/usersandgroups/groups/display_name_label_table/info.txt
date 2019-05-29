@@ -1,2 +1,2 @@
-//todo: TS will be same as in search_group_table package
+//info: TS will be same as in search_group_table package
 //requirements should state that from this point we're moved to view of search group table

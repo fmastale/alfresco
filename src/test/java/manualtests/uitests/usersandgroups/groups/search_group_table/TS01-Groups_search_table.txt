@@ -4,4 +4,4 @@ TC01 - Display no groups
 TC02 - Display 100 groups
 TC03 - Display 101 groups
 TC04 - Display 100 groups with 'Show System Groups' checkbox marked
-//todo: I've choose 100 to be table max length
+//info: I've choose 100 to be table max length

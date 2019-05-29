@@ -14,8 +14,14 @@ public class BrowseGroupsPanel extends PageObject{
     @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-remove-button-button")
     private WebElement deleteButton;
 
+    //todo: clean this
+    @FindBy(xpath = "//div[@class='yui-columnbrowser-column-body']")
+    private WebElement groupsTable;
+
     @FindBy(xpath = "//a[@class='yui-columnbrowser-item groups-item-group']")
     private List<WebElement> groups;
+
+    private By xPathToGroupsTable = By.xpath("//div[@class='yui-columnbrowser-column-body']");
 
     public BrowseGroupsPanel(WebDriver driver) {
         super(driver);
@@ -59,5 +65,14 @@ public class BrowseGroupsPanel extends PageObject{
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getRemoveGroupSpan(groupToRemove));
         jsExecutor.executeScript("arguments[0].click();", getRemoveGroupButton(groupToRemove));
         clickDeleteButton();
+    }
+
+    //todo: clean this
+    public WebElement getGroupsTable() {
+        return groupsTable;
+    }
+
+    public By getxPathToGroupsTable() {
+        return xPathToGroupsTable;
     }
 }

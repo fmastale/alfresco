@@ -8,5 +8,3 @@ TC05 - Quota of 8 non-printable characters on KB
 TC06 - Quota of 8 mixed symbols and Box on MB
 TC07 - Quota of 9 digits and Box on MB
 TC08 - Quota of '-1.0' and Box on GB
-
-//Todo: can I mix checking quota and select box?!
