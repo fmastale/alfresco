@@ -82,8 +82,13 @@ public class ManagingGroupTest {
         //when:
         browseGroupsPanel.removeGroup(jsExecutor, groupToRemove);
         go.to(Pages.BROWSE_GROUPS_PANEL);
-        //todo: clean waitFor...
-        waitForElement.wait(browseGroupsPanel.getxPathToGroupsTable(), timeOut);
+
+        //todo: why this is working:
+        waitForElement.wait(By.xpath("//div[@class='yui-columnbrowser-column-body']"),timeOut);
+        // but this is not:
+        //waitForElement.wait(browseGroupsPanel.getxPathToGroupsTable(), timeOut);
+        // and this is neither:
+        //waitForElement.wait(browseGroupsPanel.getGroupsTable(), timeOut);
 
         //then:
         assertFalse(browseGroupsPanel.isGroupOnList(groupToRemove), "Group was found on a list containing all of groups");
@@ -106,8 +111,10 @@ public class ManagingGroupTest {
         go.to(Pages.BROWSE_GROUPS_PANEL);
         waitForElement.wait(By.xpath("//div[@class='yui-columnbrowser-column-body']"), timeOut);
 
+        boolean isFound = browseGroupsPanel.isGroupOnList(secondToRemove);
+
         //then:
-        assertFalse(browseGroupsPanel.isGroupOnList(secondToRemove), "Group was found on a list containing all of groups");
+        assertFalse(isFound, "Group was found on a list containing all of groups");
     }
 
     @BeforeEach
@@ -157,7 +164,7 @@ public class ManagingGroupTest {
 
     private static Stream<Arguments> permanentRemoveGroupProvider() {
         return Stream.of(
-                Arguments.of("SecondToRemove")
+                Arguments.of("Second")
         );
     }
 }

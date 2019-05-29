@@ -58,7 +58,8 @@ public class BrowseGroupsPanel extends PageObject{
     }
 
     public boolean isGroupOnList(String groupToRemove) {
-        return groups.stream().anyMatch(element -> element.getText().equals(groupToRemove));
+        boolean isFound = groups.stream().anyMatch(element -> element.getText().equals(groupToRemove));
+        return isFound;
     }
 
     public void removeGroup(JavascriptExecutor jsExecutor, String groupToRemove) {
@@ -75,4 +76,5 @@ public class BrowseGroupsPanel extends PageObject{
     public By getxPathToGroupsTable() {
         return xPathToGroupsTable;
     }
+
 }
