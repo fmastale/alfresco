@@ -1,44 +1,40 @@
 package automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends PageObject{
 
-    @FindBy(id = "page_x002e_components_x002e_slingshot-login_x0023_default-username")
-    private WebElement usernameLocator;
+    private By usernameLocator = By.id("page_x002e_components_x002e_slingshot-login_x0023_default-username");
 
-    @FindBy(id = "page_x002e_components_x002e_slingshot-login_x0023_default-password")
-    private WebElement passwordLocator;
+    private By passwordLocator  = By.id("page_x002e_components_x002e_slingshot-login_x0023_default-password");
 
-    @FindBy(id = "page_x002e_components_x002e_slingshot-login_x0023_default-submit-button")
-    private WebElement loginButtonLocator;
+    private By loginButtonLocator = By.id("page_x002e_components_x002e_slingshot-login_x0023_default-submit-button");
 
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
-    public LoginPage typeUsername(String username) {
-        usernameLocator.sendKeys(username);
-        return this;
+    public void loginUser(String username, String password) {
+        typeUsername(username);
+        typePassword(password);
+        clickLoginButton();
     }
 
-    public LoginPage typePassword(String password) {
-        passwordLocator.sendKeys(password);
-        return this;
+    private void clickLoginButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButtonLocator));
+        driver.findElement(loginButtonLocator).click();
     }
 
-    public HomePage submitLogin() {
-        loginButtonLocator.submit();
-        return new HomePage(driver);
+    private void typePassword(String password) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordLocator));
+        driver.findElement(passwordLocator).sendKeys(password);
     }
 
-    public void logUser(String username, String password) {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.typeUsername(username);
-        loginPage.typePassword(password);
-        HomePage homePage = loginPage.submitLogin();
+    private void typeUsername(String username) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameLocator));
+        driver.findElement(usernameLocator).sendKeys(username);
     }
 }

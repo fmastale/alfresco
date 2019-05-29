@@ -1,23 +1,24 @@
 package automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewGroupPage extends PageObject {
 
-    @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-create-shortname")
-    private WebElement identifierLocator;
+    private By identifierLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-create-shortname");
 
-    @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-create-displayname")
-    private WebElement displayNameLocator;
+    private By displayNameLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-create-displayname");
 
-    @FindBy(id = "page_x002e_ctool_x002e_admin-console_x0023_default-creategroup-ok-button-button")
-    private WebElement createGroupButtonLocator;
+    private By createGroupButtonLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-creategroup-ok-button-button");
 
-    public NewGroupPage(WebDriver driver) {
-        super(driver);
+    public NewGroupPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
+
+
 
     public NewGroupPage typeIdentifier(String identifier) {
         identifierLocator.sendKeys(identifier);
