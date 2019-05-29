@@ -1,7 +1,9 @@
 package automation.tests;
 
 import automation.pages.BrowseGroupsPanel;
+import automation.pages.EditGroupPage;
 import automation.pages.LoginPage;
+import automation.pages.NewGroupPage;
 import automation.utils.WaitForElement;
 import automation.utils.loaders.EnvironmentConfigLoader;
 import automation.utils.loaders.Go;
@@ -20,6 +22,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @DisplayName("TS01 - Managing groups")
 public class ManagingGroupTest {
 
@@ -35,34 +39,49 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("groupCredentialsProvider")
     void checkIfNewGroupCanBeCreated(final String identifier, final String displayName) {
+        //given:
         go.to(Pages.NEW_GROUP_PAGE);
 
-        //create group - new group page
-        New
+        //when:
+        NewGroupPage newGroupPage = new NewGroupPage(driver, wait);
+        newGroupPage.createGroup(displayName, identifier);
 
-        //check if created - browse panel
-
-
+        //then:
+        assertTrue(browseGroupsPanel.checkIfGroupOnList(displayName, identifier),
+                "New group wan't found on the list");
     }
 
     @DisplayName("TC02 - Existing group can be edited")
     @ParameterizedTest
     @MethodSource("groupNamesAndIdentifierProvider")
-    void checkIfGroupCanBeEdited(final String displayName, final String identifier, final String newDisplayName) {
+    void checkIfGroupCanBeEdited(final String identifier, final String newDisplayName) {
+        //given:
+        go.toConcretePage(Pages.GROUP_EDIT_PAGE, identifier);
 
+        //when:
+        EditGroupPage editGroupPage = new EditGroupPage(driver, wait);
+        editGroupPage.editGroup(newDisplayName);
+
+        //then:
+        assertTrue(browseGroupsPanel.checkIfGroupOnList(newDisplayName, identifier),
+                "New group wan't found on the list");
     }
 
     @DisplayName("TC03 - Existing group can be removed")
     @ParameterizedTest
     @MethodSource("groupToRemoveProvider")
-    void checkIfGroupCanBeRemoved(String groupToRemove) {
+    void checkIfGroupCanBeRemoved(final String groupToRemove) {
+        //given:
 
+        //when:
+
+        //then:
     }
 
     @DisplayName("TC04 - Existing group can be removed permanently")
     @ParameterizedTest
     @MethodSource("permanentRemoveGroupProvider")
-    void checkIfGroupCanBeRemovedPermanently(String secondToRemove) {
+    void checkIfGroupCanBeRemovedPermanently(final String secondToRemove) {
 
     }
 
@@ -92,7 +111,7 @@ public class ManagingGroupTest {
 
     @AfterAll
     static void afterAll() {
-       driver.quit();
+       //driver.quit();
     }
 
     private static Stream<Arguments> groupCredentialsProvider() {
@@ -103,7 +122,7 @@ public class ManagingGroupTest {
 
     private static Stream<Arguments> groupNamesAndIdentifierProvider() {
         return Stream.of(
-                Arguments.of("SomeGroup", "Some", "SomeGroup with updated name")
+                Arguments.of("Some", "SomeGroup with updated name")
         );
     }
 

@@ -3,7 +3,7 @@ package automation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -11,36 +11,26 @@ import java.util.List;
 public class BrowseGroupsPanel extends PageObject{
     private WebElement newGroupSpan;
 
-    @FindBy(xpath = "//a[@class='yui-columnbrowser-item groups-item-group']")
-    private List<WebElement> spansWithGroupsNames;
+    private By spansWithGroupsNames = By.xpath("//a[@class='yui-columnbrowser-item groups-item-group']");
 
-    @FindBy(xpath = "//div[@class='yui-columnbrowser-column-body']")
-    private WebElement groupsTable;
+    private By tableWithGroupsName = By.xpath("//div[@class='yui-columnbrowser-column-body']");
 
+    private By exactGroupSpan;
 
     public BrowseGroupsPanel(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
-    public void setNewGroupSpan(String displayName, String identifier) {
-        this.newGroupSpan = driver.findElement(By.xpath(String.format("//span[contains(text(),'%s (%s)')]", displayName, identifier)));
+    public void setExactGroupSpan(String displayName, String identifier) {
+        exactGroupSpan = By.xpath(String.format("//span[contains(text(),'%s (%s)')]", displayName, identifier));
     }
 
-    public String getNewGroupName() {
-        String name = newGroupSpan.getText();
-        return name;
+    public boolean checkIfGroupOnList(String displayName, String identifier) {
+        String groupFullName = String.format("%s (%s)", displayName, identifier);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(tableWithGroupsName));
+        List<WebElement> groups = driver.findElements(spansWithGroupsNames);
+
+        return groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
     }
-
-    public boolean isInGroups(String groupName) {
-        System.out.println(spansWithGroupsNames.size());
-        spansWithGroupsNames.stream().forEach(element -> System.out.println(element.getText()));
-        boolean isFound = spansWithGroupsNames.stream().anyMatch(element -> element.getText().equals(groupName));
-        return isFound;
-    }
-
-    public WebElement getGroupsTable() {
-        return groupsTable;
-    }
-
-
 }

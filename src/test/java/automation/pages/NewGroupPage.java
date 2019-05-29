@@ -2,8 +2,7 @@ package automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewGroupPage extends PageObject {
@@ -18,28 +17,26 @@ public class NewGroupPage extends PageObject {
         super(driver, wait);
     }
 
-
-
-    public NewGroupPage typeIdentifier(String identifier) {
-        identifierLocator.sendKeys(identifier);
-        return this;
-    }
-
-    public NewGroupPage typeDisplayName(String displayName) {
-        displayNameLocator.sendKeys(displayName);
-        return this;
-    }
-
-    public NewGroupPage submitCreateGroupButton() {
-        createGroupButtonLocator.click();
-        return this;
-    }
-
     public NewGroupPage createGroup(String displayName, String identifier) {
         typeDisplayName(displayName);
         typeIdentifier(identifier);
-        submitCreateGroupButton();
+        clickCreateGroupButton();
         return this;
+    }
+
+    private void clickCreateGroupButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(createGroupButtonLocator));
+        driver.findElement(createGroupButtonLocator).click();
+    }
+
+    private void typeIdentifier(String identifier) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(identifierLocator));
+        driver.findElement(identifierLocator).sendKeys(identifier);
+    }
+
+    private void typeDisplayName(String displayName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(displayNameLocator));
+        driver.findElement(displayNameLocator).sendKeys(displayName);
     }
 
 }

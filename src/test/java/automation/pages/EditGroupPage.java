@@ -2,6 +2,7 @@ package automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EditGroupPage extends PageObject {
@@ -15,24 +16,19 @@ public class EditGroupPage extends PageObject {
     }
 
 
-    /*public void addNewDisplayName(String newDisplayName) {
-        waitForElement.wait(editGroupInputField, 5);
-        editGroupInputField.sendKeys(newDisplayName);
+    public void editGroup(String newDisplayName) {
+        typeNewDispalyName(newDisplayName);
+        clickSaveChangesButton();
     }
 
-    public void editDisplayName(String newDisplayName) {
-        getEditGroupInputField().clear();
-        addNewDisplayName(newDisplayName);
-        clickUpdateButton();
+    private void clickSaveChangesButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(saveChangesButton));
+        driver.findElement(saveChangesButton).click();
     }
 
-    public WebElement getEditGroupInputField() {
-        waitForElement.wait(editGroupInputField, timeOut);
-        return editGroupInputField;
+    private void typeNewDispalyName(String newDisplayName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(editGroupInputField));
+        driver.findElement(editGroupInputField).clear();
+        driver.findElement(editGroupInputField).sendKeys(newDisplayName);
     }
-
-    public void clickUpdateButton() {
-        saveChangesButton.click();
-    }*/
-
 }
