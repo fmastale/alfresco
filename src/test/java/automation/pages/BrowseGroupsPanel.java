@@ -16,6 +16,7 @@ public class BrowseGroupsPanel extends PageObject{
     private By groupsTableLocator = By.xpath("//div[@class='yui-columnbrowser-column-body']");
     private By deleteGroupButtonLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-remove-button-button");
 
+
     public BrowseGroupsPanel(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
         jsExecutor = ((JavascriptExecutor)driver);
@@ -34,6 +35,7 @@ public class BrowseGroupsPanel extends PageObject{
         List<WebElement> groups = driver.findElements(groupsNamesSpansLocator);
 
         //todo: stale element reference exception workaround:     - is there easiest and more elegant way to handle this?
+        // it working in isolation but not when I run all tests, why?
 
         boolean isFound;
 

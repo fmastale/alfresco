@@ -47,7 +47,7 @@ public class ManagingGroupTest {
 
         //then:
         assertTrue(browseGroupsPanel.checkIfGroupOnList(displayName, identifier),
-                "New group wan't found on the list");
+                "New group wasn't found on the list");
     }
 
     @DisplayName("TC02 - Existing group can be edited")
@@ -63,7 +63,7 @@ public class ManagingGroupTest {
 
         //then:
         assertTrue(browseGroupsPanel.checkIfGroupOnList(newDisplayName, identifier),
-                "New group wan't found on the list");
+                "New group wasn't found on the list");
     }
 
     @DisplayName("TC03 - Existing group can be removed")
@@ -84,7 +84,14 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("permanentRemoveGroupProvider")
     void checkIfGroupCanBeRemovedPermanently(final String displayName, final String identifier) {
+        //given:
+        go.to(Pages.BROWSE_GROUPS_PANEL);
 
+        //when:
+        browseGroupsPanel.removeGroup(displayName, identifier);
+
+        //then:
+        assertFalse(browseGroupsPanel.checkIfGroupOnList(displayName, identifier), "Group was found on the list");
     }
 
     @BeforeEach
@@ -133,7 +140,7 @@ public class ManagingGroupTest {
 
     private static Stream<Arguments> permanentRemoveGroupProvider() {
         return Stream.of(
-                Arguments.of("Second")
+                Arguments.of("SecondGroup", "Second")
         );
     }
 }
