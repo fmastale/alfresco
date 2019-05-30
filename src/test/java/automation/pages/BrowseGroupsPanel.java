@@ -1,9 +1,6 @@
 package automation.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -36,8 +33,18 @@ public class BrowseGroupsPanel extends PageObject{
         wait.until(ExpectedConditions.visibilityOfElementLocated(groupsNamesSpansLocator));
         List<WebElement> groups = driver.findElements(groupsNamesSpansLocator);
 
-        //stale element reference exception
-        return groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
+        //todo: stale element reference exception workaround:     - is there easiest and more elegant way to handle this?
+
+        boolean isFound;
+
+        try {
+            isFound = groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
+        } catch (StaleElementReferenceException e) {
+            isFound = groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
+            e.printStackTrace();
+        }
+
+        return isFound;
     }
 
     public void removeGroup(String displayName, String identifier) {
