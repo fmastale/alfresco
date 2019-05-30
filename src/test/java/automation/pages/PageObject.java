@@ -11,6 +11,7 @@ public class PageObject {
     public PageObject(WebDriver driver, WebDriverWait wait){
         this.driver = driver;
         this.wait = wait;
+        // can be removed if won't use @FindBy
         PageFactory.initElements(driver, this);
     }
 }

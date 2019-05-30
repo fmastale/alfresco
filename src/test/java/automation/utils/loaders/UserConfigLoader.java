@@ -9,7 +9,7 @@ public class UserConfigLoader {
         this.properties = PropertiesLoader.load(propName);
     }
 
-    public String getUserLogin(){
+    public String getUsername(){
         return properties.getString("login");
     }
 

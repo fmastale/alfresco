@@ -16,7 +16,6 @@ public class BrowseGroupsPanel extends PageObject{
     private By groupsTableLocator = By.xpath("//div[@class='yui-columnbrowser-column-body']");
     private By deleteGroupButtonLocator = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-remove-button-button");
 
-
     public BrowseGroupsPanel(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
         jsExecutor = ((JavascriptExecutor)driver);
@@ -27,26 +26,20 @@ public class BrowseGroupsPanel extends PageObject{
     }
 
     public boolean checkIfGroupOnList(String displayName, String identifier) {
+
         String groupFullName = String.format("%s (%s)", displayName, identifier);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(groupsTableLocator));
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(groupsNamesSpansLocator));
+
+        driver.navigate().refresh();
         List<WebElement> groups = driver.findElements(groupsNamesSpansLocator);
 
-        //todo: stale element reference exception workaround:     - is there easiest and more elegant way to handle this?
-        // it working in isolation but not when I run all tests, why?
+        System.out.println(groups.size());
+        groups.stream().forEach(group -> System.out.println(group.getText()));
+        System.out.println();
 
-        boolean isFound;
-
-        try {
-            isFound = groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
-        } catch (StaleElementReferenceException e) {
-            isFound = groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
-            e.printStackTrace();
-        }
-
-        return isFound;
+        return groups.stream().anyMatch(group -> group.getText().equals(groupFullName));
     }
 
     public void removeGroup(String displayName, String identifier) {

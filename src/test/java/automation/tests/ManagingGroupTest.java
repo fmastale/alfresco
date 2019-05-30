@@ -2,9 +2,8 @@ package automation.tests;
 
 import automation.pages.BrowseGroupsPanel;
 import automation.pages.EditGroupPage;
-import automation.pages.LoginPage;
+import automation.pages.LogInPage;
 import automation.pages.NewGroupPage;
-import automation.utils.WaitForElement;
 import automation.utils.loaders.EnvironmentConfigLoader;
 import automation.utils.loaders.Go;
 import automation.utils.loaders.Pages;
@@ -24,15 +23,16 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
+
 @DisplayName("TS01 - Managing groups")
 public class ManagingGroupTest {
+    //todo: why 0 in some checkIfGroupOnList()
 
     private static Go go;
     private static WebDriver driver;
-    private BrowseGroupsPanel browseGroupsPanel;
-    private WaitForElement waitForElement;
-    private static int timeOut = 5;
     private static WebDriverWait wait;
+    private BrowseGroupsPanel browseGroupsPanel;
 
     @DisplayName("TC01 - New group can be created")
     @ParameterizedTest
@@ -54,6 +54,7 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("groupNamesAndIdentifierProvider")
     void checkIfGroupCanBeEdited(final String identifier, final String newDisplayName) {
+        // todo: getting stale element exception
         //given:
         go.toConcretePage(Pages.GROUP_EDIT_PAGE, identifier);
 
@@ -63,7 +64,7 @@ public class ManagingGroupTest {
 
         //then:
         assertTrue(browseGroupsPanel.checkIfGroupOnList(newDisplayName, identifier),
-                "New group wasn't found on the list");
+                "Edited group wasn't found on the list");
     }
 
     @DisplayName("TC03 - Existing group can be removed")
@@ -84,8 +85,10 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("permanentRemoveGroupProvider")
     void checkIfGroupCanBeRemovedPermanently(final String displayName, final String identifier) {
+        // TC04 looks like TC03 but relations between groups are different
         //given:
         go.to(Pages.BROWSE_GROUPS_PANEL);
+        System.out.println(browseGroupsPanel.checkIfGroupOnList(displayName, identifier));
 
         //when:
         browseGroupsPanel.removeGroup(displayName, identifier);
@@ -98,26 +101,28 @@ public class ManagingGroupTest {
     void beforeEach() {
         go.to(Pages.ADMIN_TOOLS_GROUPS_PAGE);
         browseGroupsPanel = new BrowseGroupsPanel(driver, wait);
-        waitForElement = new WaitForElement(driver);
     }
 
     @BeforeAll
     public static void beforeAll() {
         EnvironmentConfigLoader envConfLoader = new EnvironmentConfigLoader("environment");
+
         driver = envConfLoader.getDriver();
-        wait = new WebDriverWait(driver, timeOut);
+        wait = new WebDriverWait(driver, envConfLoader.getTimeOut());
+
         go = new Go(driver);
         go.to(Pages.LOGIN_PAGE);
 
         UserConfigLoader userConfLoader = new UserConfigLoader("user");
-        LoginPage loginPage = new LoginPage(driver, wait);
 
-        loginPage.loginUser(userConfLoader.getUserLogin(), userConfLoader.getUserPassword());
+        LogInPage logInPage = new LogInPage(driver, wait);
+        logInPage.logUser(userConfLoader.getUsername(), userConfLoader.getUserPassword());
+
     }
 
     @AfterAll
     static void afterAll() {
-       driver.quit();
+        driver.quit();
     }
 
     private static Stream<Arguments> groupCredentialsProvider() {
