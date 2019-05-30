@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EditGroupPage extends PageObject {
 
     private By editGroupInputField = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-update-displayname");
-
     private By saveChangesButton = By.id("page_x002e_ctool_x002e_admin-console_x0023_default-updategroup-save-button-button");
 
     public EditGroupPage(WebDriver driver, WebDriverWait wait) {

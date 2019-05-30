@@ -16,12 +16,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("TS01 - Managing groups")
@@ -32,7 +32,6 @@ public class ManagingGroupTest {
     private BrowseGroupsPanel browseGroupsPanel;
     private WaitForElement waitForElement;
     private static int timeOut = 5;
-    private static JavascriptExecutor jsExecutor;
     private static WebDriverWait wait;
 
     @DisplayName("TC01 - New group can be created")
@@ -70,18 +69,21 @@ public class ManagingGroupTest {
     @DisplayName("TC03 - Existing group can be removed")
     @ParameterizedTest
     @MethodSource("groupToRemoveProvider")
-    void checkIfGroupCanBeRemoved(final String groupToRemove) {
+    void checkIfGroupCanBeRemoved(final String displayName, final String identifier) {
         //given:
+        go.to(Pages.BROWSE_GROUPS_PANEL);
 
         //when:
+        browseGroupsPanel.removeGroup(displayName, identifier);
 
         //then:
+        assertFalse(browseGroupsPanel.checkIfGroupOnList(displayName, identifier), "Group was found on the list");
     }
 
     @DisplayName("TC04 - Existing group can be removed permanently")
     @ParameterizedTest
     @MethodSource("permanentRemoveGroupProvider")
-    void checkIfGroupCanBeRemovedPermanently(final String secondToRemove) {
+    void checkIfGroupCanBeRemovedPermanently(final String displayName, final String identifier) {
 
     }
 
@@ -104,14 +106,11 @@ public class ManagingGroupTest {
         LoginPage loginPage = new LoginPage(driver, wait);
 
         loginPage.loginUser(userConfLoader.getUserLogin(), userConfLoader.getUserPassword());
-
-        //do I need it here?
-        jsExecutor = ((JavascriptExecutor)driver);
     }
 
     @AfterAll
     static void afterAll() {
-       //driver.quit();
+       driver.quit();
     }
 
     private static Stream<Arguments> groupCredentialsProvider() {
@@ -128,7 +127,7 @@ public class ManagingGroupTest {
 
     private static Stream<Arguments> groupToRemoveProvider() {
         return Stream.of(
-                Arguments.of("RemovableGroup (Removable)")
+                Arguments.of("RemovableGroup", "Removable")
         );
     }
 
