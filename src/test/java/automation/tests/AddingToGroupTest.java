@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @DisplayName("TS02 - Verify adding to group")
 public class AddingToGroupTest {
     private static Go go;
@@ -28,6 +30,8 @@ public class AddingToGroupTest {
     public void checkIfNewUserCanBeAddedToGroup(String displayName, String identifier, String username) {
 
         browseGroupsPanel.addUserToGroup(displayName, identifier, username);
+
+        assertTrue(true, "message");
 
     }
 
