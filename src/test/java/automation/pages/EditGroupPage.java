@@ -21,11 +21,9 @@ public class EditGroupPage extends PageObject {
     }
 
     private void clickSaveChangesButton() {
-        //todo: make waits more DRY
+        //todo: can wait.until... can be more DRY?!
         wait.until(ExpectedConditions.visibilityOfElementLocated(saveChangesButton));
         driver.findElement(saveChangesButton).click();
-
-
     }
 
     private void typeNewDispalyName(String newDisplayName) {

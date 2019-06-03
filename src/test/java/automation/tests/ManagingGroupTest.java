@@ -23,12 +23,8 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-
 @DisplayName("TS01 - Managing groups")
 public class ManagingGroupTest {
-    //todo: why 0 in some checkIfGroupOnList()
-
     private static Go go;
     private static WebDriver driver;
     private static WebDriverWait wait;
@@ -54,7 +50,6 @@ public class ManagingGroupTest {
     @ParameterizedTest
     @MethodSource("groupNamesAndIdentifierProvider")
     void checkIfGroupCanBeEdited(final String identifier, final String newDisplayName) {
-        // todo: getting stale element exception
         //given:
         go.toConcretePage(Pages.GROUP_EDIT_PAGE, identifier);
 
@@ -88,7 +83,6 @@ public class ManagingGroupTest {
         // TC04 looks like TC03 but relations between groups are different
         //given:
         go.to(Pages.BROWSE_GROUPS_PANEL);
-        System.out.println(browseGroupsPanel.checkIfGroupOnList(displayName, identifier));
 
         //when:
         browseGroupsPanel.removeGroup(displayName, identifier);
@@ -115,9 +109,7 @@ public class ManagingGroupTest {
 
         UserConfigLoader userConfLoader = new UserConfigLoader("user");
 
-        LogInPage logInPage = new LogInPage(driver, wait);
-        logInPage.logUser(userConfLoader.getUsername(), userConfLoader.getUserPassword());
-
+        new LogInPage(driver, wait).logUser(userConfLoader.getUsername(), userConfLoader.getUserPassword());
     }
 
     @AfterAll

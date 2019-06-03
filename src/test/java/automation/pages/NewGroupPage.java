@@ -15,11 +15,10 @@ public class NewGroupPage extends PageObject {
         super(driver, wait);
     }
 
-    public NewGroupPage createGroup(String displayName, String identifier) {
+    public void createGroup(String displayName, String identifier) {
         typeDisplayName(displayName);
         typeIdentifier(identifier);
         clickCreateGroupButton();
-        return this;
     }
 
     private void clickCreateGroupButton() {
